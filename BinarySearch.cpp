@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 // binary search
@@ -19,27 +20,33 @@ int binarySearch(std::vector<int> &num, int value, int left, int right) {
 
 int main()
 {
-	//practice vector
-	std::vector<int> vec;
-	vec.push_back(0);
-	vec.push_back(5);
-	vec.push_back(1);
-	vec.push_back(8);
-	vec.push_back(2);
-	vec.push_back(6);
-	vec.push_back(4);
-	vec.push_back(9);
-	vec.push_back(7);
-	vec.push_back(3);
+  //practice vector
+  std::vector<int> vec;
+  vec.push_back(0);
+  vec.push_back(5);
+  vec.push_back(1);
+  vec.push_back(3);
+  vec.push_back(2);
+  vec.push_back(6);
+  vec.push_back(4);
+  vec.push_back(9);
+  vec.push_back(1);
+  vec.push_back(3);
 
-	int search = binarySearch(vec,5,0,vec.size()-1);
+  std::sort(vec.begin(),vec.end());
 
-	if (search != -1)
-	{
-		std::cout << vec[search];
-	}
-	std::cout << std::endl;
+  std::cout << "My vector: ";
+  for (int i=0; i<vec.size(); ++i) {
+    std::cout << vec[i] << " ";
+  }
 
+  int val = 5;
 
-	return 0;
+  int search = binarySearch(vec,val,0,vec.size()-1);
+
+  std::cout << "\nValue to find: " <<  val << std::endl;
+
+  std::cout << "Search index: "<< search << std::endl;
+
+  return 0;
 }
